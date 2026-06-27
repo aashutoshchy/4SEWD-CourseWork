@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+h3{
+    margin-top: 30px;
+    font-size: 2rem;
+}
+
+h3, p{
+    text-align: center;
+}
+
+/*  removes scroll bar */
+pre {
+    overflow: hidden;
+    width: 100%;
+    font-weight: 500;
+    padding-left: 4px;
+}
