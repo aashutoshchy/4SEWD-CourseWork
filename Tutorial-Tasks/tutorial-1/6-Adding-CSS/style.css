@@ -1,0 +1,28 @@
+p {
+    padding: 10px 10px;
+    border-left: 3px solid #007BFF;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+.first-para{
+    background-color: #F8D7DA;
+}
+
+.first-para span{
+    color: #DC3545;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.first-para strong{
+    color: #732130;
+}
+
+.sec-para{
+    background-color: #F9F9F9;
+}
+
+.third-para{
+    background-color: #FFF3CD;
+    color: #58400f;
+}
