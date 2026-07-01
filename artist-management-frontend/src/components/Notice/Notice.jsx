@@ -4,7 +4,7 @@ import NoticeCard from "./NoticeCard";
 function Notice() {
   return (
     <div className="notice">
-      <p className="notice-heading">Notice</p>
+      <p className="heading">Notice</p>
       <div className="notice-search">
         <input type="text" placeholder="Search" />
         <i className="fa-solid fa-magnifying-glass"></i>

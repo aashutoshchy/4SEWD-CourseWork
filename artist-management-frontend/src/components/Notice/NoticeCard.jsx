@@ -8,7 +8,7 @@ function NoticeCard() {
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt error qui
         eum? Error sit eaque, alias explicabo velit dolorem commodi ab nobis
         laudantium illo quo dolorum quis tempore fugiat nemo harum inventore,
-        quae omnis.
+        quae omnis. <a href="">See more</a>
       </p>
       <p className="notice-date">17 May 2025</p>
     </div>
