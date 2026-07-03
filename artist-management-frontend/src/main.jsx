@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/admin/login",
+        path: "/admin",
         element: <Login />,
       },
     ],
