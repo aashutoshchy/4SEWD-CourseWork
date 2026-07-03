@@ -13,6 +13,9 @@ import Contact from "./components/Contact/Contact.jsx";
 import Layout from "./Layout.jsx";
 import Home from "./components/Home";
 import Login from "./components/Login/Login.jsx";
+import Artist from "./components/Artists/Artist.jsx";
+
+import { useParams } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/artists",
         element: <Artists />,
+      },
+      {
+        path: "/artists/:id",
+        element: <Artist />,
       },
       {
         path: "/contact",
