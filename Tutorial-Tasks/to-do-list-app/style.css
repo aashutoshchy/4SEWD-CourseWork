@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --color-primary: #e4dace;
+  --color-secondary: #f3f3f3;
+  --color-accent: #76b7cd;
+
+  --text-primary: #d98326;
+  --text-secondary: #737373;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10dvh;
+  background: var(--color-primary);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+header h1 span {
+  color: var(--text-primary);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.user-input {
+  width: 50%;
+  min-width: 300px;
+  height: 6dvh;
+  overflow: hidden;
+  background: var(--color-primary);
+  border-radius: 15px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+}
+
+.user-input input {
+  background: none;
+  outline: none;
+  border: none;
+  padding: 3px 15px;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+.user-input .add-btn {
+  width: 10%;
+  min-width: 50px;
+  background: var(--color-accent);
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
+
+.todo-container {
+  background: var(--color-primary);
+  width: 50%;
+  min-width: 300px;
+  margin-top: 2%;
+  height: 70vh;
+  border-radius: 1.8rem;
+}
+
+.todo-container ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+ul li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  padding: 0 3px;
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 7px;
+  margin-bottom: 25px;
+}
+
+ul li i {
+  color: var(--text-primary);
+}
