@@ -100,3 +100,7 @@ ul li {
 ul li i {
   color: var(--text-primary);
 }
+
+.completed {
+  text-decoration: line-through;
+}
