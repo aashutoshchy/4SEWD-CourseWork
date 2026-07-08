@@ -1,7 +1,7 @@
 const addBtn = document.querySelector(".add-btn");
 const todoLists = document.querySelector(".todos"); // <ul>
 const userInput = document.querySelector(".user-input input");
-const tasks = [];
+const tasks = localStorage.getItem(tasks) || [];
 
 const addTask = () => {
   let task = userInput.value;
@@ -11,6 +11,7 @@ const addTask = () => {
     isCompleted: false,
   });
   showTask(todoLists, tasks);
+  localStorage.setItem("tasks", tasks);
 };
 
 const showTask = (todoLists, tasks = []) => {
@@ -21,4 +22,5 @@ const showTask = (todoLists, tasks = []) => {
     .join("");
 };
 
+showTask(todoLists, tasks);
 addBtn.addEventListener("click", addTask);
