@@ -1,0 +1,51 @@
+.home-background {
+  width: 100%;
+  position: fixed;
+  bottom: -100px;
+  z-index: -1;
+}
+
+.home-heading {
+  text-align: center;
+  padding-bottom: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-heading .latest-release-btn {
+  height: 34px;
+  width: 116px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  background-color: #dcd6f7;
+  color: #424874;
+  font-weight: 600;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.home-heading .latest-release-btn:hover {
+  background-color: #a6b1e1;
+}
+
+@media screen and (max-width: 825px) {
+  .home-background {
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-background {
+    bottom: 0;
+  }
+
+  .home-heading img {
+    max-height: 5dvh;
+  }
+}
