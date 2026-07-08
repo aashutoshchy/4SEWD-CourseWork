@@ -1,7 +1,7 @@
 const addBtn = document.querySelector(".add-btn");
 const todoLists = document.querySelector(".todos"); // <ul>
 const userInput = document.querySelector(".user-input input");
-const tasks = localStorage.getItem(tasks) || [];
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 const addTask = () => {
   let task = userInput.value;
@@ -11,7 +11,7 @@ const addTask = () => {
     isCompleted: false,
   });
   showTask(todoLists, tasks);
-  localStorage.setItem("tasks", tasks);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 const showTask = (todoLists, tasks = []) => {
