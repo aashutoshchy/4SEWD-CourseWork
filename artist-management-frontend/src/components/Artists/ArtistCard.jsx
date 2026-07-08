@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./ArtistCard.css";
 
 function ArtistCard({ id, src, name, bio }) {
   return (

@@ -1,0 +1,15 @@
+.artist-visual {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.artist-visual img {
+  width: 100%;
+}
+
+.artist-visual h1 {
+  top: 50%;
+  right: 20%;
+  position: absolute;
+}

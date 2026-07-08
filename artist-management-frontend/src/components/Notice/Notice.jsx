@@ -1,5 +1,6 @@
 import React from "react";
 import NoticeCard from "./NoticeCard";
+import "./Notice.css";
 
 function Notice() {
   return (

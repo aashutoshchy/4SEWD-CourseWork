@@ -1,0 +1,17 @@
+.NoticeCard {
+  background: #dcd6f7;
+  width: 90%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: ease-in-out 0.2s;
+}
+
+.NoticeCard:hover {
+  background: #ccc6e9;
+  transform: translateY(-3px);
+}
+
+.NoticeCard .notice-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+}

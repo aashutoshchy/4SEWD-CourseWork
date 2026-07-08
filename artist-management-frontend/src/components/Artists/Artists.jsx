@@ -1,6 +1,7 @@
 import React from "react";
 import ArtistCard from "./ArtistCard";
 import artists from "./artistsData";
+import "./Artists.css";
 
 function Artists() {
   return (

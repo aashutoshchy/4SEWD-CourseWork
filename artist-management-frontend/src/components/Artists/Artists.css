@@ -1,0 +1,8 @@
+.artist-list {
+  width: 80%;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

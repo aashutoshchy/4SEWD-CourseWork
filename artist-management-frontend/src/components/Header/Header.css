@@ -1,0 +1,112 @@
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #f4eeffc0;
+  z-index: 10;
+}
+
+nav {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 0px 70px;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Poppins, Arial, Helvetica, sans-serif, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.logo img {
+  height: 5dvh;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links li a:hover {
+  color: #424874;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-links li a.active {
+  color: #424874;
+}
+
+.hamburger {
+  display: none;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 825px) {
+  nav {
+    padding: 0px 12px;
+  }
+
+  .nav-links {
+    display: none;
+    height: 100dvh;
+    background: #000000f4;
+    position: fixed;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .nav-links li a {
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  /* Close Button */
+  .close-btn {
+    display: none;
+    position: absolute;
+    color: white;
+    right: 2rem;
+    z-index: 10;
+  }
+
+  .close-btn.active {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  nav {
+    padding: 0px 20px;
+  }
+
+  .logo img {
+    height: 3dvh;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
