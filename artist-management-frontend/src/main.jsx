@@ -10,8 +10,8 @@ import About from "./components/About/About.jsx";
 import Notice from "./components/Notice/Notice.jsx";
 import Artists from "./components/Artists/Artists.jsx";
 import Contact from "./components/Contact/Contact.jsx";
-import Layout from "./Layout.jsx";
-import Home from "./components/Home";
+import Layout from "./layouts/Layout.jsx";
+import Home from "./pages/Home.jsx";
 import Login from "./components/Login/Login.jsx";
 import Artist from "./components/Artists/Artist.jsx";
 
