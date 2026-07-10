@@ -21,6 +21,7 @@ nav {
 
 .logo img {
   height: 5dvh;
+  z-index: 20;
 }
 
 .nav-links {

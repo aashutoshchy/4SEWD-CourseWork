@@ -25,12 +25,18 @@
   align-items: center;
   justify-content: center;
   gap: 50px;
-  background-color: #424874;
+  background: #dcd6f7;
   padding: 20px 0;
 }
 
 .artist-details ul li a {
   text-decoration: none;
-  color: white;
+  color: #424874;
   font-weight: 600;
+}
+
+.artist-details ul li a.active {
+  background: #ccc6e9;
+  padding: 10px 15px;
+  border-radius: 20px;
 }

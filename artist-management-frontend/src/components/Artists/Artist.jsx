@@ -1,5 +1,4 @@
-import { useParams } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Outlet, useParams, NavLink } from "react-router-dom";
 import "./Artist.css";
 
 function Artist() {
@@ -17,15 +16,18 @@ function Artist() {
       <div className="artist-details">
         <ul>
           <li>
-            <NavLink to={`/artists/${id}/profile`}>Profile</NavLink>
+            <NavLink to="." end>
+              Profile
+            </NavLink>
           </li>
           <li>
-            <NavLink to={`/artists/${id}/discography`}>Discography</NavLink>
+            <NavLink to="discography">Discography</NavLink>
           </li>
           <li>
-            <NavLink to={`/artists/${id}/gallery`}>Gallery</NavLink>
+            <NavLink to="gallery">Gallery</NavLink>
           </li>
         </ul>
+        <Outlet />
       </div>
     </div>
   );
