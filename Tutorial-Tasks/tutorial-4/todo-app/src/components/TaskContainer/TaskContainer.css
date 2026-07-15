@@ -1,0 +1,11 @@
+.task-item {
+    list-style:none;
+}
+.urgent-task {
+    color: red;
+}
+h2 {
+    text-align: center;
+    color: blue
+    ;
+}
