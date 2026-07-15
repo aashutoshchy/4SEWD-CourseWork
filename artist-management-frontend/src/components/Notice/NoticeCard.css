@@ -1,5 +1,5 @@
 .NoticeCard {
-  background: #dcd6f7;
+  background: var(--bg-card);
   width: 90%;
   padding: 10px 20px;
   border-radius: 5px;
@@ -7,7 +7,7 @@
 }
 
 .NoticeCard:hover {
-  background: #ccc6e9;
+  background: var(--bg-card-hover);
   transform: translateY(-3px);
 }
 

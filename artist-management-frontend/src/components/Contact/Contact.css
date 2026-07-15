@@ -11,7 +11,7 @@
 }
 
 .contact-input label {
-  color: #424874;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
@@ -33,13 +33,22 @@
 }
 
 #contact-submit {
-  background-color: #000;
+  background-color: var(--btn-primary-bg);
   margin: auto;
-  color: #fff;
+  color: var(--btn-primary-text);
   padding: 10px 20px;
   float: right;
   margin-bottom: 30px;
   border: none;
   border-radius: 4px;
   outline: none;
+}
+
+@media screen and (max-width: 825px) {
+  .contact-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }

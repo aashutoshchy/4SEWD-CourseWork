@@ -10,7 +10,7 @@
 .release {
   width: 80%;
   height: 300px;
-  background: #dcd6f7;
+  background: var(--bg-card);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -21,7 +21,7 @@
 }
 
 .release:hover {
-  background: #ccc6e9;
+  background: var(--bg-card-hover);
   transform: translateY(-3px);
 }
 

@@ -63,7 +63,7 @@ p span {
 
 @media screen and (max-width: 825px) {
   .profile-container h1 {
-    background: #dcd6f7;
+    background: var(--bg-card);
   }
   .info-right {
     display: none;

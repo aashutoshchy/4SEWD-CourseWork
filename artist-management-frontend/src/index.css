@@ -5,6 +5,25 @@
   font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
+:root {
+  --text-primary: #000;
+  --text-secondary: #424874;
+  --text-link: #424874;
+  --text-white: #fff;
+
+  --bg-page: #ffffff;
+  --bg-surface: rgb(211, 205, 237);
+  --bg-card: #dcd6f7;
+  --bg-card-hover: #ccc6e9;
+
+  --btn-primary-bg: #000000;
+  --btn-primary-text: #fff;
+
+  --btn-secondary-bg: #ccc6e9;
+  --btn-secondary-bg-hover: #8b84ad;
+  --btn-secondary-text: #424874;
+}
+
 li {
   list-style: none;
 }
@@ -41,7 +60,7 @@ main {
 }
 
 .sub-heading {
-  margin: 0 20px;
+  /* margin: 0 20px; */
   text-align: center;
   font-size: 0.9rem;
   color: #424874;

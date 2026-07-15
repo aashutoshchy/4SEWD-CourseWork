@@ -16,7 +16,7 @@
   outline: none;
   background: none;
   padding: 2px 16px;
-  color: #424874;
+  color: var(--bg-surface);
   flex: 1;
 }
 
@@ -24,7 +24,7 @@
   width: 10%;
   font-size: 1.2rem;
   font-weight: 900;
-  color: #424874;
+  color: var(--btn-secondary-text);
 }
 
 .notices {

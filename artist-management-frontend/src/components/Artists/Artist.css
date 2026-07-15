@@ -25,18 +25,22 @@
   align-items: center;
   justify-content: center;
   gap: 50px;
-  background: #dcd6f7;
+  background: var(--bg-surface);
   padding: 20px 0;
 }
 
 .artist-details ul li a {
   text-decoration: none;
-  color: #424874;
+  color: var(--btn-secondary-text);
   font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.artist-details ul li a:hover {
+  background: var(--btn-secondary-bg-hover);
 }
 
 .artist-details ul li a.active {
-  background: #ccc6e9;
-  padding: 10px 15px;
-  border-radius: 20px;
+  background: var(--btn-secondary-bg);
 }
