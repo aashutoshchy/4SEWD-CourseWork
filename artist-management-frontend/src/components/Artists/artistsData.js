@@ -2,21 +2,36 @@ const artists = [
   {
     id: 1,
     name: "IU",
-    image: "https://i.scdn.co/image/ab6761610000e5eb789f38042e5ef8911fc3826b",
+    image:
+      "https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2023/09/20/7bbf6337-8997-46f2-9616-ca6c4da9a112_70fdfdcb.jpg",
     bio: "South Korean singer-songwriter.",
   },
   {
     id: 2,
     name: "Sajjan Raj Vaidya",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRNlZy4mVmqF6y3ce6poz26SsWKZbgRUAt82KGQHbMFJztH2O2qwuOO604&s=10",
+      "https://upload.wikimedia.org/wikipedia/commons/8/80/Sajjan_Raj_Vaidya_in_butwal.jpg",
     bio: "Nepali singer-songwriter.",
   },
   {
     id: 3,
-    name: "ROSÉ",
+    name: "Darshan Raval",
     image:
-      "https://dam.mediacorp.sg/image/upload/s--p704OKC2--/c_crop,h_1536,w_2048,x_0,y_0/c_fill,g_auto,h_622,w_830/f_auto,q_auto/v1/mediacorp/cna/image/2024/11/26/1732008240cropped3577x2682.jpg?itok=7Rwove1q",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfoW5sPdtnW2p5j7g3cUC1cpl_c0fAodArERdZM0TiXZwWeOen9YRuqxm7&s=10",
+    bio: "BLACKPINK member.",
+  },
+  {
+    id: 4,
+    name: "Kim Sejeong",
+    image:
+      "https://k-popped.com/kpopped2012/wp-content/uploads/2023/11/kim-sejong-malaysia-1-600x400.jpeg",
+    bio: "BLACKPINK member.",
+  },
+  {
+    id: 4,
+    name: "Kim Sejeong",
+    image:
+      "https://k-popped.com/kpopped2012/wp-content/uploads/2023/11/kim-sejong-malaysia-1-600x400.jpeg",
     bio: "BLACKPINK member.",
   },
 ];

@@ -9,9 +9,9 @@ header {
 
 nav {
   height: 100%;
-  width: 100%;
+  width: 90%;
   display: flex;
-  padding: 0px 70px;
+  margin: auto;
   align-items: center;
   justify-content: space-between;
   font-family: Poppins, Arial, Helvetica, sans-serif, Helvetica, sans-serif;

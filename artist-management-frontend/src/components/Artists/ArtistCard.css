@@ -1,20 +1,23 @@
 .artist-box {
-  height: 23rem;
-  width: 20rem;
+  height: 32rem;
+  width: 40rem;
+  background-color: var(--bg-card);
   overflow: hidden;
   position: relative;
   margin-bottom: 20px;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .artist-box:hover {
   background: var(--bg-card-hover);
-  border-radius: 10px;
 }
 
 .artist-box img {
-  height: 88%;
+  height: 90%;
   width: 100%;
+  object-fit: cover;
+  object-position: top;
   border-radius: 5px;
 }
 

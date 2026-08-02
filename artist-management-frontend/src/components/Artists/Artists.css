@@ -1,8 +1,15 @@
-.artist-list {
-  width: 80%;
+.artists-page {
+  width: 100%;
   display: flex;
-  margin: auto;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+}
+
+.artist-list {
+  width: 90%;
+  display: flex;
+  /* margin: auto; */
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 }

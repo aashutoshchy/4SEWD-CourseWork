@@ -1,6 +1,6 @@
 .NoticeCard {
   background: var(--bg-card);
-  width: 90%;
+  width: 100%;
   padding: 10px 20px;
   border-radius: 5px;
   transition: ease-in-out 0.2s;
