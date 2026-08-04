@@ -20,6 +20,7 @@ import { useParams } from "react-router-dom";
 import Profile from "./components/Artists/ArtistDetails/Profile.jsx";
 import Discography from "./components/Artists/ArtistDetails/Discography.jsx";
 import Gallery from "./components/Artists/ArtistDetails/Gallery.jsx";
+import DiscographyDetail from "./components/Artists/ArtistDetails/DiscographyDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
         element: <Artists />,
       },
       {
-        path: "/artists/:id",
+        path: "/artists/:slug",
         element: <Artist />,
         children: [
           {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             element: <Gallery />,
           },
         ],
+      },
+      {
+        path: "artists/:name/discography/:id",
+        element: <DiscographyDetail />,
       },
       {
         path: "/contact",
