@@ -19,8 +19,9 @@
   --btn-primary-bg: #000000;
   --btn-primary-text: #fff;
 
-  --btn-secondary-bg: #ccc6e9;
-  --btn-secondary-bg-hover: #8b84ad;
+  --btn-secondary-bg: #e1cfff;
+  --btn-secondary-bg-active: #633ba5;
+  --btn-secondary-bg-hover: #cfc5ff;
   --btn-secondary-text: #424874;
 }
 

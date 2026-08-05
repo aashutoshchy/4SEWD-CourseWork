@@ -1,9 +1,11 @@
 .album-container {
   width: 90%;
-  margin: 2rem auto;
   height: 60vh;
+  margin: 2rem auto;
+  padding-bottom: 30px;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgb(70, 70, 70);
 }
 
 .album-details {
@@ -14,7 +16,7 @@
   padding-bottom: 100px;
 }
 
-a .album-details .navigation a {
+.album-details .navigation a {
   text-decoration: none;
   font-weight: 600;
   color: black;
@@ -37,6 +39,10 @@ a .album-details .navigation a {
   color: rgba(0, 0, 0, 0.656);
 }
 
+.song-meta :nth-child(1) {
+  font-weight: 600;
+}
+
 .song-genre {
   background: var(--bg-surface);
   margin-right: 20px;
@@ -44,6 +50,17 @@ a .album-details .navigation a {
   border-radius: 30px;
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+.listen-links h4 {
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+.streaming-icons {
+  padding: 10px 0;
+  display: flex;
+  gap: 10px;
 }
 
 .album-poster {
@@ -55,4 +72,55 @@ a .album-details .navigation a {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+/* Lyrics Container */
+.lyrics-container {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.lyrics-container h4 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.lyrics-preferences {
+  padding: 10px 0;
+}
+
+.lyrics-preferences button {
+  background-color: var(--btn-secondary-bg);
+  border: none;
+  text-decoration: none;
+  padding: 6px 15px;
+  margin-right: 10px;
+  color: black;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lyrics-preferences button.active {
+  background-color: var(--btn-secondary-bg-active);
+  color: white;
+}
+
+.lyrics-preferences button:focus-visible {
+  outline: 2px solid var(--btn-secondary-bg-active);
+  outline-offset: 2px;
+}
+
+.lyrics-text {
+  font-family: inherit;
+  white-space: pre-wrap;
+  line-height: 1.8;
+  margin-top: 1rem;
+}
+
+.no-lyrics {
+  color: #888;
+  font-style: italic;
+  margin-top: 1rem;
 }

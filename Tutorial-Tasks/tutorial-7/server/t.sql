@@ -1,0 +1,3 @@
+Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='TodoModels';
+Executing (default): CREATE TABLE IF NOT EXISTS `TodoModels` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` VARCHAR(255) NOT NULL, `deadline` DATETIME NOT NULL, `isUrgent` TINYINT(1) DEFAULT 0, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+Executing (default): PRAGMA INDEX_LIST(`TodoModels`)
