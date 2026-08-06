@@ -1,25 +1,33 @@
 .album-container {
   width: 90%;
-  height: 60vh;
   margin: 2rem auto;
   padding-bottom: 30px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-areas:
+    "nav    poster"
+    "info   poster";
+  column-gap: 40px;
+  row-gap: 20px;
+  align-items: start;
   border-bottom: 1px solid rgb(70, 70, 70);
 }
 
-.album-details {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 100px;
+.navigation {
+  grid-area: nav;
 }
 
-.album-details .navigation a {
+.navigation a {
   text-decoration: none;
   font-weight: 600;
   color: black;
+}
+
+.album-info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .song-detail {
@@ -53,6 +61,7 @@
 }
 
 .listen-links h4 {
+  margin-top: 20px;
   font-weight: 500;
   font-size: 1.8rem;
 }
@@ -64,20 +73,23 @@
 }
 
 .album-poster {
-  height: 100%;
+  grid-area: poster;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .album-poster img {
-  height: 100%;
   width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  display: block;
 }
 
-/* Lyrics Container */
 .lyrics-container {
   width: 90%;
   margin: 2rem auto;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgb(70, 70, 70);
 }
 
 .lyrics-container h4 {
@@ -123,4 +135,40 @@
   color: #888;
   font-style: italic;
   margin-top: 1rem;
+}
+
+.credits-container {
+  border-bottom: 1px solid rgb(70, 70, 70);
+  width: 90%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.credits-container h4 {
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.credits-row {
+  display: flex;
+  max-width: 360px;
+  width: 100%;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.credits-row p:last-child {
+  font-size: larger;
+  font-weight: 800;
+}
+
+@media screen and (max-width: 666px) {
+  .album-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "poster"
+      "info";
+  }
 }

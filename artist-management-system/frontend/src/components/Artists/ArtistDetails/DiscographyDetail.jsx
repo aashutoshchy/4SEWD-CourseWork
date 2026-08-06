@@ -89,6 +89,18 @@ function DiscographyDetail() {
           <p className="no-lyrics">Lyrics not available for this song yet.</p>
         )}
       </div>
+      <div className="credits-container">
+        <h4>Credits</h4>
+        <div className="credits-row">
+          <p>Lyricst</p> <p>IU</p>
+        </div>
+        <div className="credits-row">
+          <p>Composer</p> <p>IU</p>
+        </div>
+        <div className="credits-row">
+          <p>Arranger</p> <p>IU</p>
+        </div>
+      </div>
     </div>
   );
 }
