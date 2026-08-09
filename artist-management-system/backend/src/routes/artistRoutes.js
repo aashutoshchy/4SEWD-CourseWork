@@ -7,12 +7,14 @@ import {
   deleteArtist,
 } from "../controllers/artistController.js";
 
+import protect from "../middleware/authMiddleware.js";
+
 const router = express.Router();
 
 router.get("/", getAllArtists);
 router.get("/:slug", getArtistBySlug);
-router.post("/", createArtist);
-router.put("/:slug", updateArtist);
-router.delete("/:slug", deleteArtist);
+router.post("/", protect, createArtist);
+router.put("/:slug", protect, updateArtist);
+router.delete("/:slug", protect, deleteArtist);
 
 export default router;
