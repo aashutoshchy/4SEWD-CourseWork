@@ -27,6 +27,15 @@ const releaseSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    type: {
+      type: String, // "EP", "Single", "Album"
+    },
+    duration: {
+      type: String,
+    },
+    releaseDate: {
+      type: Date,
+    },
     coverImage: {
       type: String,
     },
@@ -39,6 +48,12 @@ const releaseSchema = new mongoose.Schema(
       english: { type: String },
       romanized: { type: String },
     },
+    credits: [
+      {
+        role: { type: String },
+        name: { type: String },
+      },
+    ],
   },
   { timestamps: true },
 );

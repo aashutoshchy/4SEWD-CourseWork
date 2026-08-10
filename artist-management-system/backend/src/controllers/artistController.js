@@ -2,13 +2,13 @@ import Artist from "../models/Artist.js";
 
 export const getAllArtists = async (req, res) => {
   try {
-    console.log("getAllArtists hit");
+    // console.log("getAllArtists hit");
     const artists = await Artist.find();
-    console.log("artists found:", artists.length);
-    console.log("artists data:", JSON.stringify(artists[0]));
+    // console.log("artists found:", artists.length);
+    // console.log("artists data:", JSON.stringify(artists[0]));
     res.json(artists); // remove this to make the page forever loaded.
   } catch (error) {
-    console.log("error caught:", error.message);
+    // console.log("error caught:", error.message);
     res.status(500).json({ message: error.message });
   }
 };

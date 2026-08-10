@@ -23,6 +23,28 @@ const artistSchema = new mongoose.Schema(
     debutDate: {
       type: Date,
     },
+    realName: {
+      type: String,
+      trim: true,
+    },
+    birthDate: {
+      type: Date,
+    },
+    height: {
+      type: String,
+    },
+    weight: {
+      type: String,
+    },
+    occupation: {
+      type: String,
+    },
+    instruments: {
+      type: String,
+    },
+    yearsActive: {
+      type: String,
+    },
     profileImage: {
       type: String,
     },

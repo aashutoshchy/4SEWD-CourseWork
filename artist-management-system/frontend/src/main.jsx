@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "artists/:name/discography/:id",
+        path: "artists/:slug/discography/:id",
         element: <DiscographyDetail />,
       },
       {

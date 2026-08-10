@@ -1,17 +1,36 @@
 import { Outlet, useParams, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./Artist.css";
+import Loading from "../../components/Loading/Loading.jsx";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Artist() {
-  const { id } = useParams();
+  const { slug } = useParams();
+  const [artist, setArtist] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/artists/${slug}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setArtist(data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
+      });
+  }, [slug]);
+
+  if (loading) return <Loading />;
+
+  if (!artist) return <p>Artist not found.</p>;
 
   return (
     <div className="artist-container">
       <div className="artist-visual">
-        <img
-          src="https://cdn.kpopconcerts.com/wp-content/uploads/2024/08/8-%EC%A0%9C%EA%B3%B5EDAM%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8-1024x683.jpg"
-          alt=""
-        />
-        <h1>Artist Name</h1>
+        <img src={artist.profileImage} alt={artist.name} />
+        <h1>{artist.name}</h1>
       </div>
       <div className="artist-details">
         <ul className="artist-nav">
@@ -27,7 +46,7 @@ function Artist() {
             <NavLink to="gallery">Gallery</NavLink>
           </li>
         </ul>
-        <Outlet />
+        <Outlet context={{ artist }} />
       </div>
     </div>
   );

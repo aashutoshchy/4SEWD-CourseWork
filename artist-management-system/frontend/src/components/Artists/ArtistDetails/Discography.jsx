@@ -1,27 +1,32 @@
 import "./Discography.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Loading from "../../../components/Loading/Loading.jsx";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Discography() {
-  const params = useParams();
-
+  const { slug } = useParams();
+  const { artist } = useOutletContext();
   const [releases, setReleases] = useState([]);
 
-  const API_URL = import.meta.env.VITE_API_URL;
-
   useEffect(() => {
-    fetch(`${API_URL}/api/releases`)
+    if (!artist?._id) return;
+    fetch(`${API_URL}/api/releases?artistId=${artist._id}`)
       .then((response) => response.json())
-      .then((data) => setReleases(data));
-  }, []);
+      .then((data) => setReleases(data))
+      .catch((e) => console.log(e));
+  }, [artist._id]);
+
+  if (!artist) return <Loading />;
 
   return (
     <div className="discography-container">
       {releases.map((release) => (
         <Link
-          to={`/artists/${params.slug}/discography/${release.id}`}
+          to={`/artists/${slug}/discography/${release._id}`}
           className="release"
-          key={release.id}
+          key={release._id}
         >
           <img src={release.coverImage} alt={release.title} />
           <div className="release-info">
