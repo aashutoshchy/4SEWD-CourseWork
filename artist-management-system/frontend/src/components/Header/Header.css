@@ -2,7 +2,8 @@ header {
   /* position: sticky;
   top: 0; */
   width: 100%;
-  padding: 20px 0;
+  padding: 5px 0;
+  height: 10vh;
   background-color: #f4eeffc0;
   z-index: 10;
 }
@@ -19,9 +20,18 @@ nav {
   font-size: 1rem;
 }
 
+.logo {
+  height: 8dvh;
+  overflow: hidden;
+}
+
 .logo img {
-  height: 5dvh;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
   z-index: 20;
+  transform: scale(1.5);
+  transform-origin: center;
 }
 
 .nav-links {
@@ -100,13 +110,8 @@ nav {
 
 @media screen and (max-width: 480px) {
   nav {
-    padding: 0px 20px;
+    padding: 0px 5px;
   }
-
-  .logo img {
-    height: 3dvh;
-  }
-
   .hamburger {
     display: block;
   }

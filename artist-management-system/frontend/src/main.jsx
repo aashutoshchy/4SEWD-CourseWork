@@ -22,6 +22,16 @@ import Discography from "./components/Artists/ArtistDetails/Discography.jsx";
 import Gallery from "./components/Artists/ArtistDetails/Gallery.jsx";
 import DiscographyDetail from "./components/Artists/ArtistDetails/DiscographyDetail.jsx";
 
+import ProtectedRoute from "./components/Admin/ProtectedRoute.jsx";
+import AdminLayout from "./components/Admin/AdminLayout.jsx";
+import Sidebar from "./components/Admin/Sidebar/Sidebar.jsx";
+import Dashboard from "./components/Admin/Dashboard/Dashboard.jsx";
+import ArtistsList from "./components/Admin/Artists/ArtistsList.jsx";
+import ArtistForm from "./components/Admin/Artists/ArtistForm.jsx";
+import ReleasesList from "./components/Admin/Releases/ReleasesList.jsx";
+import NoticesList from "./components/Admin/Notices/NoticesList.jsx";
+import MessagesList from "./components/Admin/Messages/MessagesList.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -69,10 +79,27 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      {
-        path: "/admin",
-        element: <Login />,
-      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <Login />,
+  },
+  {
+    path: "/admin/dashboard",
+    element: (
+      <ProtectedRoute>
+        <AdminLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "artists", element: <ArtistsList /> },
+      { path: "artists/new", element: <ArtistForm /> },
+      { path: "artists/edit/:slug", element: <ArtistForm /> },
+      { path: "releases", element: <ReleasesList /> },
+      { path: "notices", element: <NoticesList /> },
+      { path: "messages", element: <MessagesList /> },
     ],
   },
 ]);

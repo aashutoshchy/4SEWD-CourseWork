@@ -1,0 +1,21 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+.sidebar {
+  width: 26%;
+  max-width: 280px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #eee;
+  position: sticky;
+  top: 0;
+}
+
+.admin-main {
+  height: 100vh;
+  flex: 1;
+  padding: 30px 40px;
+}

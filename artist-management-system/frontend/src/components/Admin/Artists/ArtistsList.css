@@ -1,0 +1,128 @@
+.artists-list-container {
+  width: 100%;
+  padding: 0 50px;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+.artists-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.artists-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-link);
+}
+
+.artists-subheading {
+  font-size: 0.95rem;
+  color: #6b6b7d;
+  margin-top: 4px;
+}
+
+.add-artist-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text-link);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 12px 20px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.add-artist-btn i {
+  font-size: 0.8rem;
+}
+
+.artists-table-wrapper {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #ece7fb;
+  overflow: hidden;
+}
+
+.artists-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.artists-table thead {
+  background: #ece7fb;
+}
+
+.artists-table th {
+  text-align: left;
+  padding: 16px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.artists-table td {
+  padding: 16px 24px;
+  font-size: 0.9rem;
+  color: #2c2c3a;
+  border-bottom: 1px solid #f0eefb;
+}
+
+.artists-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.artist-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.artist-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b3b98, #6a0dad);
+  flex-shrink: 0;
+}
+
+.artist-name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.status-badge {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.status-badge.active {
+  color: #2e9e4c;
+}
+
+.status-badge.inactive {
+  color: #b3413e;
+}
+
+.action-icons {
+  display: flex;
+  gap: 18px;
+}
+
+.action-icons i {
+  cursor: pointer;
+  color: var(--text-link);
+  font-size: 0.95rem;
+}
+
+.action-icons i:hover {
+  opacity: 0.7;
+}
+
+.action-icons .fa-trash {
+  color: #b3413e;
+}
