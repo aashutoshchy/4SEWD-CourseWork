@@ -48,6 +48,12 @@ const artistSchema = new mongoose.Schema(
     profileImage: {
       type: String,
     },
+    bannerImage: {
+      type: String,
+    },
+    cardImage: {
+      type: String,
+    },
     spotifyUrl: {
       type: String,
     },

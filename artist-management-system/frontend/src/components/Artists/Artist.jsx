@@ -29,7 +29,10 @@ function Artist() {
   return (
     <div className="artist-container">
       <div className="artist-visual">
-        <img src={artist.profileImage} alt={artist.name} />
+        <img
+          src={artist.bannerImage || artist.profileImage}
+          alt={artist.name}
+        />
         <h1>{artist.name}</h1>
       </div>
       <div className="artist-details">

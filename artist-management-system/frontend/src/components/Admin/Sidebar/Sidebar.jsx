@@ -6,9 +6,10 @@ import "./Sidebar.css";
 
 const navItems = [
   { label: "Dashboard", path: "/admin/dashboard" },
-  { label: "Artists", path: "/admin/dashboard/artists" },
-  { label: "Notices", path: "/admin/dashboard/notices" },
-  { label: "Messages", path: "/admin/dashboard/messages" },
+  { label: "Artists", path: "/admin/artists" },
+  { label: "Releases", path: "/admin/releases" },
+  { label: "Notices", path: "/admin/notices" },
+  { label: "Messages", path: "/admin/messages" },
 ];
 
 function Sidebar() {
@@ -21,13 +22,13 @@ function Sidebar() {
 
   return (
     <div className="sidebar-container">
-      <div className="logo">
+      <div className="sidebar-logo">
         <Link to="/">
           <img src={logo} alt="Aurora Entertainment" />
         </Link>
       </div>
 
-      <ul className="nav-links">
+      <ul className="sidebar-nav-links">
         {navItems.map((item) => (
           <li key={item.path}>
             <NavLink to={item.path}>{item.label}</NavLink>

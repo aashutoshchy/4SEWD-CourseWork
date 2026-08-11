@@ -28,11 +28,11 @@ function Artists() {
         {artists.map((artist) => {
           return (
             <ArtistCard
-              key={artist.name}
+              key={artist.slug}
               slug={artist.slug}
               id={artist.id}
               name={artist.name}
-              src={artist.profileImage}
+              src={artist.cardImage || artist.profileImage}
               bio={artist.bio}
             />
           );

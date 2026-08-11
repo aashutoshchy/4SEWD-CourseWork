@@ -5,6 +5,9 @@ import releaseRoutes from "./routes/releaseRoutes.js";
 import noticeRoutes from "./routes/noticeRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
+import spotifyRoutes from "./routes/spotifyRoutes.js";
+import youtubeRoutes from "./routes/youtubeRoutes.js";
 
 const app = express();
 
@@ -16,5 +19,8 @@ app.use("/api/notices", noticeRoutes);
 app.use("/api/releases", releaseRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/upload", uploadRoutes);
+app.use("/api/spotify", spotifyRoutes);
+app.use("/api/youtube", youtubeRoutes);
 
 export default app;

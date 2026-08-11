@@ -98,3 +98,23 @@
   font-size: 0.75rem;
   color: #8b8b9e;
 }
+
+@media screen and (max-width: 825px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .welcome-heading {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+}

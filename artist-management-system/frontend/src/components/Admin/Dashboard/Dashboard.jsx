@@ -28,24 +28,6 @@ const stats = [
   },
 ];
 
-const activities = [
-  { text: 'You added a new artist "Aashutosh Chaudhary"', time: "2 hours ago" },
-  { text: 'New message from "Na Hee Do"', time: "2 hours ago" },
-  {
-    text: 'You added a new release "Timro Naam Ke Chha Ra?" for Ashutosh',
-    time: "2 hours ago",
-  },
-  {
-    text: "Your Published a new notice",
-    time: "2 hours ago",
-    action: "Mark all as read",
-  },
-  {
-    text: 'You added a new release "Chhor De (feat. r1m4n)" for Ashutosh',
-    time: "2 hours ago",
-  },
-];
-
 function Dashboard() {
   return (
     <div className="dashboard">

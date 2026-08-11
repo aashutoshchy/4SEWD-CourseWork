@@ -7,15 +7,46 @@
 .sidebar {
   width: 26%;
   max-width: 280px;
+  min-width: 240px;
+  flex-shrink: 0;
   height: 100vh;
   background: #fff;
   border-right: 1px solid #eee;
   position: sticky;
   top: 0;
+  align-self: flex-start;
 }
 
 .admin-main {
-  height: 100vh;
   flex: 1;
+  min-width: 0;
   padding: 30px 40px;
+}
+
+@media screen and (max-width: 825px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    height: auto;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .admin-main {
+    padding: 24px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .admin-main {
+    padding: 20px 14px;
+  }
 }

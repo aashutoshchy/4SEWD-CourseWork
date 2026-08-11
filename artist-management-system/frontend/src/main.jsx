@@ -31,6 +31,7 @@ import ArtistForm from "./components/Admin/Artists/ArtistForm.jsx";
 import ReleasesList from "./components/Admin/Releases/ReleasesList.jsx";
 import NoticesList from "./components/Admin/Notices/NoticesList.jsx";
 import MessagesList from "./components/Admin/Messages/MessagesList.jsx";
+import ReleaseForm from "./components/Admin/Releases/ReleaseForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -82,22 +83,24 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/admin",
+    path: "/admin/login",
     element: <Login />,
   },
   {
-    path: "/admin/dashboard",
+    path: "/admin",
     element: (
       <ProtectedRoute>
         <AdminLayout />
       </ProtectedRoute>
     ),
     children: [
-      { index: true, element: <Dashboard /> },
+      { path: "dashboard", element: <Dashboard />, index: true },
       { path: "artists", element: <ArtistsList /> },
       { path: "artists/new", element: <ArtistForm /> },
       { path: "artists/edit/:slug", element: <ArtistForm /> },
       { path: "releases", element: <ReleasesList /> },
+      { path: "releases/new", element: <ReleaseForm /> },
+      { path: "releases/edit/:id", element: <ReleaseForm /> },
       { path: "notices", element: <NoticesList /> },
       { path: "messages", element: <MessagesList /> },
     ],

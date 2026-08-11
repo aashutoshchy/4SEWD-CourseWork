@@ -1,78 +1,193 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import ImageUpload from "../ImageUpload/ImageUpload";
 import "./ArtistForm.css";
+import { validateArtist } from "../../../utils/validateArtist.js";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function ArtistForm() {
+  const { slug } = useParams();
+  const isEditMode = Boolean(slug);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
-    stageName: "",
+    slug: "",
     genre: "",
     bio: "",
+    debutDate: "",
+    profileImage: "",
+    bannerImage: "",
+    cardImage: "",
     spotifyUrl: "",
+    youtubeUrl: "",
+    instagram: "",
   });
-  const [profileImage, setProfileImage] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
+  const [loading, setLoading] = useState(isEditMode);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (!isEditMode) return;
+
+    fetch(`${API_URL}/api/artists/${slug}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setFormData({
+          name: data.name || "",
+          slug: data.slug || "",
+          genre: data.genre || "",
+          bio: data.bio || "",
+          debutDate: data.debutDate ? data.debutDate.split("T")[0] : "",
+          profileImage: data.profileImage || "",
+          bannerImage: data.bannerImage || "",
+          cardImage: data.cardImage || "",
+          spotifyUrl: data.spotifyUrl || "",
+          youtubeUrl: data.youtubeUrl || "",
+          instagram: data.socialLinks?.instagram || "",
+        });
+        setLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
+      });
+  }, [slug, isEditMode]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => {
+      const updated = { ...prev, [name]: value };
+
+      // auto-generate slug from name, only in create mode
+      if (name === "name" && !isEditMode) {
+        updated.slug = value
+          .toLowerCase()
+          .trim()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      return updated;
+    });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    const fieldErrors = validateArtist(formData);
+    setErrors((prev) => ({ ...prev, [name]: fieldErrors[name] }));
+  };
 
-    if (file.size > 5 * 1024 * 1024) {
-      alert("Image must be under 5MB");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    const fieldErrors = validateArtist(formData);
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
       return;
     }
 
-    setProfileImage(file);
-    setPreviewUrl(URL.createObjectURL(file));
+    setSaving(true);
+
+    const token = localStorage.getItem("aurora_token");
+
+    const payload = {
+      name: formData.name,
+      slug: formData.slug,
+      genre: formData.genre,
+      bio: formData.bio,
+      debutDate: formData.debutDate || undefined,
+      profileImage: formData.profileImage,
+      bannerImage: formData.bannerImage,
+      cardImage: formData.cardImage,
+      spotifyUrl: formData.spotifyUrl,
+      youtubeUrl: formData.youtubeUrl,
+      socialLinks: { instagram: formData.instagram },
+    };
+
+    const url = isEditMode
+      ? `${API_URL}/api/artists/${slug}`
+      : `${API_URL}/api/artists`;
+    const method = isEditMode ? "PUT" : "POST";
+
+    try {
+      const res = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message);
+        setSaving(false);
+        return;
+      }
+
+      navigate("/admin/artists");
+    } catch (e) {
+      setError("Something went wrong. Please try again.");
+      setSaving(false);
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: send formData + profileImage to API
-    console.log("form data:", formData);
-    console.log("profile image:", profileImage);
-  };
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="add-artist-container">
-      <h1 className="add-artist-heading">Add New Artist</h1>
+      <h1 className="add-artist-heading">
+        {isEditMode ? "Edit Artist" : "Add New Artist"}
+      </h1>
       <p className="breadcrumb">
-        <Link to="/admin/dashboard/artists">Artists</Link>
+        <Link to="/admin/artists">Artists</Link>
         <span> / </span>
-        <span className="breadcrumb-current">Add New Artist</span>
+        <span className="breadcrumb-current">
+          {isEditMode ? "Edit Artist" : "Add New Artist"}
+        </span>
       </p>
 
       <hr className="divider" />
+
+      {error && <p className="form-error">{error}</p>}
 
       <form className="add-artist-form" onSubmit={handleSubmit}>
         <div className="form-left">
           <h3>Basic Information</h3>
 
           <label>
-            Artists Name <span className="required">*</span>
+            Artist Name <span className="required">*</span>
           </label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
+            onBlur={handleBlur}
             placeholder="Enter artist's name"
             required
           />
+          {errors.name && <p className="field-error">{errors.name}</p>}
 
-          <label>Stage Name</label>
+          <label>
+            Slug <span className="required">*</span>
+          </label>
           <input
             type="text"
-            name="stageName"
-            value={formData.stageName}
+            name="slug"
+            value={formData.slug}
             onChange={handleChange}
-            placeholder="Enter stage name"
+            onBlur={handleBlur}
+            placeholder="auto-generated-from-name"
+            required
           />
+          {errors.slug && <p className="field-error">{errors.slug}</p>}
 
           <label>Genre</label>
           <input
@@ -83,6 +198,14 @@ function ArtistForm() {
             placeholder="e.g. J-Pop, K-Pop, Hip-Hop"
           />
 
+          <label>Debut Date</label>
+          <input
+            type="date"
+            name="debutDate"
+            value={formData.debutDate}
+            onChange={handleChange}
+          />
+
           <label>
             Bio <span className="required">*</span>
           </label>
@@ -90,46 +213,83 @@ function ArtistForm() {
             name="bio"
             value={formData.bio}
             onChange={handleChange}
+            onBlur={handleBlur}
             placeholder="Write a short bio..."
             rows={6}
             required
           />
+          {errors.bio && <p className="field-error">{errors.bio}</p>}
         </div>
 
         <div className="form-right">
           <h3>Profile Image</h3>
+          <div className="image-upload-section">
+            <ImageUpload
+              label="Profile Image"
+              value={formData.profileImage}
+              onUploaded={(url) =>
+                setFormData((prev) => ({ ...prev, profileImage: url }))
+              }
+              shape="circle"
+            />
 
-          <label htmlFor="profile-upload" className="upload-circle">
-            {previewUrl ? (
-              <img src={previewUrl} alt="Preview" className="upload-preview" />
-            ) : (
-              <i className="fa-solid fa-arrow-up-from-bracket upload-icon"></i>
-            )}
-          </label>
-          <input
-            id="profile-upload"
-            type="file"
-            accept="image/png"
-            onChange={handleImageChange}
-            hidden
-          />
-          <p className="upload-text">Click to Upload</p>
-          <p className="upload-subtext">Png (Max. 5MB)</p>
+            <ImageUpload
+              label="Banner Image"
+              value={formData.bannerImage}
+              onUploaded={(url) =>
+                setFormData((prev) => ({ ...prev, bannerImage: url }))
+              }
+            />
 
-          <label>
-            Spotify Url <span className="required">*</span>
-          </label>
+            <ImageUpload
+              label="Card Image"
+              value={formData.cardImage}
+              onUploaded={(url) =>
+                setFormData((prev) => ({ ...prev, cardImage: url }))
+              }
+            />
+          </div>
+          <label>Spotify URL</label>
           <input
             type="url"
             name="spotifyUrl"
             value={formData.spotifyUrl}
             onChange={handleChange}
+            onBlur={handleBlur}
             placeholder="https://open.spotify.com/artist/..."
-            required
           />
+          {errors.spotifyUrl && (
+            <p className="field-error">{errors.spotifyUrl}</p>
+          )}
 
-          <button type="submit" className="save-btn">
-            Save
+          <label>YouTube URL</label>
+          <input
+            type="url"
+            name="youtubeUrl"
+            value={formData.youtubeUrl}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="https://youtube.com/@..."
+          />
+          {errors.youtubeUrl && (
+            <p className="field-error">{errors.youtubeUrl}</p>
+          )}
+
+          <label>Instagram URL</label>
+          <input
+            type="url"
+            name="instagram"
+            value={formData.instagram}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="https://instagram.com/..."
+          />
+          {errors.instagram && (
+            <p className="field-error">{errors.instagram}</p>
+          )}
+
+          <button type="submit" className="save-btn" disabled={saving}>
+            {saving ? "Saving..." : "Save"}
           </button>
         </div>
       </form>

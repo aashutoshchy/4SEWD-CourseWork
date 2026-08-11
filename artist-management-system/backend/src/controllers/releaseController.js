@@ -39,8 +39,19 @@ export const getReleaseById = async (req, res) => {
 
 export const createRelease = async (req, res) => {
   try {
-    const { artistId, title, year, coverImage, streamingLinks, lyrics, genre } =
-      req.body;
+    const {
+      artistId,
+      title,
+      year,
+      coverImage,
+      streamingLinks,
+      lyrics,
+      genre,
+      type,
+      duration,
+      releaseDate,
+      credits,
+    } = req.body;
 
     // verify the artist actually exists before linking to them
     const artist = await Artist.findById(artistId);
@@ -56,6 +67,10 @@ export const createRelease = async (req, res) => {
       streamingLinks,
       lyrics,
       genre,
+      type,
+      duration,
+      releaseDate,
+      credits,
     });
 
     res.status(201).json(release);
@@ -81,6 +96,10 @@ export const updateRelease = async (req, res) => {
           streamingLinks,
           lyrics,
           genre,
+          type,
+          duration,
+          releaseDate,
+          credits,
         },
       },
       { new: true, runValidators: true },
