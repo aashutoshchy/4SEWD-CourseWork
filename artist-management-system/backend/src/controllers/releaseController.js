@@ -84,7 +84,18 @@ export const createRelease = async (req, res) => {
 
 export const updateRelease = async (req, res) => {
   try {
-    const { title, year, coverImage, streamingLinks, lyrics, genre } = req.body;
+    const {
+      title,
+      year,
+      coverImage,
+      streamingLinks,
+      lyrics,
+      genre,
+      type,
+      duration,
+      releaseDate,
+      credits,
+    } = req.body;
 
     const release = await Release.findByIdAndUpdate(
       req.params.id,
