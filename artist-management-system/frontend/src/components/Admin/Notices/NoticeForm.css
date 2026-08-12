@@ -14,6 +14,10 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.338);
 }
 
+.notice-form-heading {
+  color: var(--text-secondary);
+}
+
 .notice-form,
 .notice-input {
   display: flex;

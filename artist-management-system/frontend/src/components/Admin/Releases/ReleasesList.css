@@ -49,7 +49,7 @@
 .releases-table-wrapper {
   background: #fff;
   border-radius: 14px;
-  border: 1px solid #ece7fb;
+  border: 1px solid var(--bg-surface);
   overflow-x: auto;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .releases-table thead {
-  background: #ece7fb;
+  background: var(--bg-surface);
 }
 
 .releases-table th {
