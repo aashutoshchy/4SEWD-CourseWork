@@ -1,0 +1,79 @@
+.notice-list-container {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  padding-top: 40px;
+  flex-direction: column;
+  justify-content: start;
+  gap: 50px;
+}
+
+.notice-list-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notice-list-heading {
+  color: var(--text-secondary);
+}
+
+.add-news-btn {
+  background: var(--add-btn-bg);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: var(--add-btn-border-radius);
+}
+
+.add-news-btn:hover {
+  background: var(--add-btn-bg-hover);
+}
+
+.notice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.notice-list-empty {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.notice-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  padding: 18px 20px;
+  border-radius: var(--card-border-radius);
+}
+
+.delete-notice-btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .notice-list-container {
+    padding-top: 10px;
+  }
+
+  .notice-list-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+}

@@ -29,7 +29,9 @@ import Dashboard from "./components/Admin/Dashboard/Dashboard.jsx";
 import ArtistsList from "./components/Admin/Artists/ArtistsList.jsx";
 import ArtistForm from "./components/Admin/Artists/ArtistForm.jsx";
 import ReleasesList from "./components/Admin/Releases/ReleasesList.jsx";
-import NoticesList from "./components/Admin/Notices/NoticesList.jsx";
+import NoticeList from "./components/Admin/Notices/NoticesList.jsx";
+import NoticeForm from "./components/Admin/Notices/NoticeForm.jsx";
+
 import MessagesList from "./components/Admin/Messages/MessagesList.jsx";
 import ReleaseForm from "./components/Admin/Releases/ReleaseForm.jsx";
 
@@ -101,7 +103,8 @@ const router = createBrowserRouter([
       { path: "releases", element: <ReleasesList /> },
       { path: "releases/new", element: <ReleaseForm /> },
       { path: "releases/edit/:id", element: <ReleaseForm /> },
-      { path: "notices", element: <NoticesList /> },
+      { path: "notice", element: <NoticeList /> },
+      { path: "notice/new", element: <NoticeForm /> },
       { path: "messages", element: <MessagesList /> },
     ],
   },

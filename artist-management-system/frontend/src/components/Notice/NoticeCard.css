@@ -2,7 +2,7 @@
   background: var(--bg-card);
   width: 100%;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: var(--card-border-radius);
   transition: ease-in-out 0.2s;
 }
 
