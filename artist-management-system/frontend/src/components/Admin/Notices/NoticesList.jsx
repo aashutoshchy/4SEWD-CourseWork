@@ -1,37 +1,53 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { formatDate } from "../../../utils/formatDate.js";
+import Loading from "../../Loading/Loading.jsx";
 import "./NoticeList.css";
 
-// Hard coded for now — will be replaced with a fetch to /api/news
-const HARD_CODED_NOTICES = [
-  {
-    id: 1,
-    title: 'JENNIE Navigates Fleeting Summer Love in "Less Than a Lover"',
-    date: "2026.07.26",
-  },
-  {
-    id: 2,
-    title: 'JENNIE Navigates Fleeting Summer Love in "Less Than a Lover"',
-    date: "2026.07.26",
-  },
-  {
-    id: 3,
-    title: 'JENNIE Navigates Fleeting Summer Love in "Less Than a Lover"',
-    date: "2026.07.26",
-  },
-  {
-    id: 4,
-    title: 'JENNIE Navigates Fleeting Summer Love in "Less Than a Lover"',
-    date: "2026.07.26",
-  },
-];
+const API_URL = import.meta.env.VITE_API_URL;
 
 function NoticeList() {
-  const [notices, setNotices] = useState(HARD_CODED_NOTICES);
+  const [notices, setNotices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleDelete = (id) => {
-    setNotices((prev) => prev.filter((notice) => notice.id !== id));
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm(
+      "Do you really want to delete this notice?",
+    );
+    if (!confirmed) return;
+
+    const token = localStorage.getItem("aurora_token");
+    try {
+      const res = await fetch(`${API_URL}/api/notices/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        alert(data.message);
+        return;
+      }
+      setNotices((prev) => prev.filter((notice) => notice._id !== id));
+    } catch (error) {
+      alert("Something went wrong deleting this notice");
+    }
   };
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/notices`)
+      .then((response) => response.json())
+      .then((data) => {
+        setNotices(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="notice-list-container">
@@ -49,13 +65,15 @@ function NoticeList() {
           <p className="notice-list-empty">No news yet. Add your first one.</p>
         ) : (
           notices.map((notice) => (
-            <div key={notice.id} className="notice-card">
+            <div key={notice._id} className="notice-card">
               <div className="notice-card-info">
                 <h3 className="notice-card-title">{notice.title}</h3>
-                <p className="notice-card-desc">{notice.date}</p>
+                <p className="notice-card-desc">
+                  {formatDate(notice.createdAt)}
+                </p>
               </div>
               <button
-                onClick={() => handleDelete(notice.id)}
+                onClick={() => handleDelete(notice._id)}
                 className="delete-notice-btn"
               >
                 <i className="fa-solid fa-trash"></i>

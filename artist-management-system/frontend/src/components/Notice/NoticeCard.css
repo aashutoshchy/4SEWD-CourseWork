@@ -2,6 +2,9 @@
   background: var(--bg-card);
   width: 100%;
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   border-radius: var(--card-border-radius);
   transition: ease-in-out 0.2s;
 }
@@ -14,4 +17,19 @@
 .NoticeCard .notice-title {
   font-weight: 600;
   font-size: 1.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notice-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.NoticeCard div {
+  display: flex;
+  gap: 20px;
 }

@@ -3,7 +3,6 @@ import Notice from "../models/Notice.js";
 export const getAllNotices = async (req, res) => {
   try {
     const notices = await Notice.find();
-    console.log("notices");
     res.json(notices);
   } catch (error) {
     console.log("error: ", error.message);

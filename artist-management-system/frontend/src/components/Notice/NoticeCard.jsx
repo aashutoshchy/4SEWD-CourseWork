@@ -1,17 +1,15 @@
 import React from "react";
 import "./NoticeCard.css";
 
-function NoticeCard() {
+function NoticeCard({ title, description, date }) {
   return (
     <div className="NoticeCard">
-      <p className="notice-title">Hello World!!!</p>
-      <p className="notice-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt error qui
-        eum? Error sit eaque, alias explicabo velit dolorem commodi ab nobis
-        laudantium illo quo dolorum quis tempore fugiat nemo harum inventore,
-        quae omnis. <a href="">See more</a>
-      </p>
-      <p className="notice-date">17 May 2025</p>
+      <p className="notice-title">{title}</p>
+      <p className="notice-description">{description}</p>
+      <div>
+        <p className="notice-date">{date}</p>
+        <a href="">See more</a>
+      </div>
     </div>
   );
 }

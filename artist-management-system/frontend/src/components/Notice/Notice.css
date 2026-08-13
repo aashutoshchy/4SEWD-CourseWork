@@ -19,13 +19,13 @@
   border: none;
   outline: none;
   background: none;
-  padding: 2px 16px;
-  color: var(--bg-surface);
+  padding: 2px 0;
+  color: black;
   flex: 1;
 }
 
 .notice-search i {
-  width: 10%;
+  width: 8%;
   font-size: 1.2rem;
   font-weight: 900;
   color: var(--btn-secondary-text);
