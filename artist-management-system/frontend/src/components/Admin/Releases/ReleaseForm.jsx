@@ -11,7 +11,8 @@ function ReleaseForm() {
   const navigate = useNavigate();
 
   const [artists, setArtists] = useState([]);
-  const [youtubeUrl, setYoutubeUrl] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const [fetchedPreview, setFetchedPreview] = useState(null);
   const [fetching, setFetching] = useState(false);
   const [fetchError, setFetchError] = useState("");
@@ -38,7 +39,6 @@ function ReleaseForm() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
-  // load artists for the dropdown
   useEffect(() => {
     fetch(`${API_URL}/api/artists`)
       .then((res) => res.json())
@@ -46,7 +46,6 @@ function ReleaseForm() {
       .catch((e) => console.log(e));
   }, []);
 
-  // load existing release data if editing
   useEffect(() => {
     if (!isEditMode) return;
 
@@ -85,19 +84,20 @@ function ReleaseForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Step 1: fetch preview data from YouTube, don't apply it yet
-  const handleFetchYoutube = async () => {
-    if (!youtubeUrl.trim()) return;
+  // Step 1: search iTunes, get up to 5 candidates
+  const handleSearchTrack = async () => {
+    if (!searchQuery.trim()) return;
 
     setFetchError("");
     setFetching(true);
+    setSearchResults([]);
     setFetchedPreview(null);
 
     const token = localStorage.getItem("aurora_token");
 
     try {
       const res = await fetch(
-        `${API_URL}/api/youtube/video?url=${encodeURIComponent(youtubeUrl)}`,
+        `${API_URL}/api/itunes/search?q=${encodeURIComponent(searchQuery)}`,
         { headers: { Authorization: `Bearer ${token}` } },
       );
       const data = await res.json();
@@ -108,27 +108,39 @@ function ReleaseForm() {
         return;
       }
 
-      setFetchedPreview(data);
+      setSearchResults(data);
       setFetching(false);
     } catch (e) {
-      setFetchError("Failed to fetch video data. Try again.");
+      setFetchError("Failed to fetch track data. Try again.");
       setFetching(false);
     }
   };
 
-  // Step 2: admin confirms the preview is correct, apply it to the form
+  // Step 2: admin picks one candidate from the results list
+  const handleSelectResult = (track) => {
+    setFetchedPreview(track);
+    setSearchResults([]);
+  };
+
+  // Step 3: admin confirms the selected preview, apply it to the form
   const handleUsePreview = () => {
     setFormData((prev) => ({
       ...prev,
-      title: fetchedPreview.title,
-      coverImage: fetchedPreview.coverImage,
-      releaseDate: fetchedPreview.releaseDate.split("T")[0],
-      duration: fetchedPreview.duration,
-      year: new Date(fetchedPreview.releaseDate).getFullYear(),
-      youtube: fetchedPreview.youtubeUrl,
+      title: fetchedPreview.title || prev.title,
+      coverImage: fetchedPreview.coverImage || prev.coverImage,
+      releaseDate: fetchedPreview.releaseDate
+        ? fetchedPreview.releaseDate.split("T")[0]
+        : prev.releaseDate,
+      duration: fetchedPreview.durationMs
+        ? msToDuration(fetchedPreview.durationMs)
+        : prev.duration,
+      year: fetchedPreview.releaseDate
+        ? new Date(fetchedPreview.releaseDate).getFullYear()
+        : prev.year,
+      genrePrimary: fetchedPreview.genre || prev.genrePrimary,
     }));
     setFetchedPreview(null);
-    setYoutubeUrl("");
+    setSearchQuery("");
   };
 
   const handleCreditChange = (index, field, value) => {
@@ -225,33 +237,53 @@ function ReleaseForm() {
 
       <hr className="divider" />
 
-      {/* YouTube auto-fetch section */}
-      <div className="youtube-fetch-box">
-        <h3>Auto-fill from YouTube</h3>
-        <div className="youtube-fetch-row">
+      {/* iTunes auto-fetch section */}
+      <div className="track-fetch-box">
+        <h3>Auto-fill from Apple Music</h3>
+        <div className="track-fetch-row">
           <input
-            type="url"
-            placeholder="Paste YouTube video URL..."
-            value={youtubeUrl}
-            onChange={(e) => setYoutubeUrl(e.target.value)}
+            type="text"
+            placeholder="Search song title + artist (e.g. Bye Summer IU)..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button
-            type="button"
-            onClick={handleFetchYoutube}
-            disabled={fetching}
-          >
-            {fetching ? "Fetching..." : "Fetch"}
+          <button type="button" onClick={handleSearchTrack} disabled={fetching}>
+            {fetching ? "Searching..." : "Search"}
           </button>
         </div>
         {fetchError && <p className="field-error">{fetchError}</p>}
 
+        {/* Multiple candidates — admin picks one */}
+        {searchResults.length > 0 && (
+          <div className="search-results-list">
+            {searchResults.map((track, index) => (
+              <div
+                key={index}
+                className="search-result-row"
+                onClick={() => handleSelectResult(track)}
+              >
+                {track.coverImage && (
+                  <img src={track.coverImage} alt={track.title} />
+                )}
+                <div className="search-result-info">
+                  <p className="preview-title">{track.title}</p>
+                  <p className="preview-channel">
+                    {track.artistName} — {track.collectionName}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Single selected candidate — admin confirms */}
         {fetchedPreview && (
-          <div className="youtube-preview">
+          <div className="track-preview">
             <img src={fetchedPreview.coverImage} alt={fetchedPreview.title} />
-            <div className="youtube-preview-info">
+            <div className="track-preview-info">
               <p className="preview-title">{fetchedPreview.title}</p>
               <p className="preview-channel">
-                Channel: {fetchedPreview.channelTitle}
+                {fetchedPreview.artistName} — {fetchedPreview.collectionName}
               </p>
               <div className="preview-actions">
                 <button type="button" onClick={handleUsePreview}>
@@ -470,6 +502,14 @@ function ReleaseForm() {
       </form>
     </div>
   );
+}
+
+// converts milliseconds (e.g. 208000) into "3:28"
+function msToDuration(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
 export default ReleaseForm;

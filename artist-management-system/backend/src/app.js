@@ -8,6 +8,7 @@ import authRoutes from "./routes/authRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import spotifyRoutes from "./routes/spotifyRoutes.js";
 import youtubeRoutes from "./routes/youtubeRoutes.js";
+import itunesRoutes from "./routes/itunesRoutes.js";
 
 const app = express();
 
@@ -22,5 +23,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/spotify", spotifyRoutes);
 app.use("/api/youtube", youtubeRoutes);
+app.use("/api/itunes", itunesRoutes);
 
 export default app;

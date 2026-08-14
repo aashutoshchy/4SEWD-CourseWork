@@ -129,7 +129,6 @@
   color: #b3413e;
 }
 
-/* ---------- Responsive ---------- */
 @media screen and (max-width: 825px) {
   .releases-heading {
     font-size: 1.6rem;
