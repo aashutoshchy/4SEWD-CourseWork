@@ -41,7 +41,7 @@ export const deleteNotice = async (req, res) => {
   try {
     const notice = await Notice.findByIdAndDelete(req.params.id);
     if (!notice) {
-      res.status(404).json({ message: "Notice not found" });
+      return res.status(404).json({ message: "Notice not found" });
     }
 
     res.json({ message: `${notice.title} has been deleted` });

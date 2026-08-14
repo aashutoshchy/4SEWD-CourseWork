@@ -1,49 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Loading from "../../Loading/Loading";
+import { formatDate } from "../../../utils/formatDate";
 import "./MessagesList.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function MessagesList() {
-  const dummyMessages = [
-    {
-      id: 1,
-      from: "Kim Taeri",
-      subject: "Appreciating",
-      message: "Hey I love your songs",
-      date: "2026-10-15",
-    },
-    {
-      id: 2,
-      from: "Kim Taeri1",
-      subject: "Appreciating",
-      message: "Hey I love your songs",
-      date: "2026-10-15",
-    },
-    {
-      id: 3,
-      from: "Kim Taeri2",
-      subject: "Appreciating",
-      message: "Hey I love your songs",
-      date: "2026-10-15",
-    },
-    {
-      id: 4,
-      from: "Kim Taeri3",
-      subject: "Appreciating",
-      message: "Hey I love your songs",
-      date: "2026-10-15",
-    },
-    {
-      id: 5,
-      from: "Kim Taeri4",
-      subject: "Appreciating",
-      message: "Hey I love your songs",
-      date: "2026-10-15",
-    },
-  ];
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [messages, setMessages] = useState(dummyMessages);
+  const token = localStorage.getItem("aurora_token");
 
-  const handleDelete = (id) => {
-    setMessages((prev) => prev.filter((message) => message.id !== id));
+  useEffect(() => {
+    fetch(`${API_URL}/api/contact`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setMessages(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleDelete = async (id) => {
+    const confirm = window.confirm(
+      "Do You really want to delete this message?",
+    );
+    if (!confirm) return;
+    try {
+      const res = await fetch(`${API_URL}/api/contact/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        alert(data.message);
+        return;
+      }
+      setMessages((prev) => prev.filter((message) => message._id !== id));
+    } catch (error) {
+      alert("Something went wrong deleting this message");
+    }
   };
 
   return (
@@ -56,31 +58,35 @@ function MessagesList() {
           <thead>
             <tr>
               <th>From</th>
-              <th>Subject</th>
+              <th>Email</th>
               <th>Messages</th>
               <th>Date</th>
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            {messages.map((message) => (
-              <tr key={message.id}>
-                <td>{message.from}</td>
-                <td>{message.subject}</td>
-                <td>{message.message}</td>
-                <td>{message.date}</td>
-                <td>
-                  <div className="action-icons">
-                    <i className="fa-solid fa-eye"></i>
-                    <i
-                      onClick={() => handleDelete(message.id)}
-                      className="fa-solid fa-trash"
-                    ></i>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          {loading ? (
+            <Loading />
+          ) : (
+            <tbody>
+              {messages.map((message) => (
+                <tr key={message._id}>
+                  <td>{message.name}</td>
+                  <td>{message.email}</td>
+                  <td className="message-cell">{message.feedback}</td>
+                  <td>{formatDate(message.createdAt)}</td>
+                  <td>
+                    <div className="action-icons">
+                      <i className="fa-solid fa-eye"></i>
+                      <i
+                        onClick={() => handleDelete(message._id)}
+                        className="fa-solid fa-trash"
+                      ></i>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          )}
         </table>
       ) : (
         <h4>No Messages yet!</h4>

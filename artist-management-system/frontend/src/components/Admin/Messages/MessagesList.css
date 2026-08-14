@@ -58,3 +58,10 @@
 .action-icons i:hover {
   color: var(--text-primary);
 }
+
+.message-cell {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

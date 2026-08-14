@@ -27,3 +27,18 @@ export const createFeedback = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const deleteFeedback = async (req, res) => {
+  try {
+    const message = await Contact.findByIdAndDelete(req.params.id);
+    if (!message) {
+      res.status(404).json({ message: "Message not found" });
+    }
+    return res.json({ message: "Message deleted successfully" });
+  } catch (error) {
+    if (error.name === "ValidationError") {
+      return res.status(404).json({ message: error.message });
+    }
+    res.status(500).json({ message: error.message });
+  }
+};
