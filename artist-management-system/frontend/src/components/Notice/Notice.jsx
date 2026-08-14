@@ -15,7 +15,10 @@ function Notice() {
     fetch(`${API_URL}/api/notices`)
       .then((response) => response.json())
       .then((data) => {
-        setNotices(data);
+        const sorted = [...data].sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+        );
+        setNotices(sorted);
         setLoading(false);
       })
       .catch((error) => {
