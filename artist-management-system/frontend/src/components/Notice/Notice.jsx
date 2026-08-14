@@ -53,6 +53,7 @@ function Notice() {
         {filteredNotice.map((notice) => (
           <NoticeCard
             key={notice._id}
+            id={notice._id}
             title={notice.title}
             description={notice.description}
             date={formatDate(notice.createdAt)}

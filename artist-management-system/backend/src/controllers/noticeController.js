@@ -10,6 +10,15 @@ export const getAllNotices = async (req, res) => {
   }
 };
 
+export const getNoticeById = async (req, res) => {
+  try {
+    const notice = await Notice.findById(req.params.id);
+    res.json(notice);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const createNotice = async (req, res) => {
   try {
     const { title, description } = req.body;

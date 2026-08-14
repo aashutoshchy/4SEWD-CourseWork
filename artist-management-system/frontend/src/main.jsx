@@ -34,6 +34,7 @@ import NoticeForm from "./components/Admin/Notices/NoticeForm.jsx";
 
 import MessagesList from "./components/Admin/Messages/MessagesList.jsx";
 import ReleaseForm from "./components/Admin/Releases/ReleaseForm.jsx";
+import NoticeDetail from "./components/Notice/NoticeDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/notice",
         element: <Notice />,
+      },
+      {
+        path: "/notice/:id",
+        element: <NoticeDetail />,
       },
       {
         path: "/artists",
