@@ -1,11 +1,12 @@
 import React from "react";
 import Overlay from "./Overlay";
+import mainBg from "../assets/main-bg.png";
 import "./Home.css";
 
 function Home() {
   return (
     <main>
-      <img className="home-background" src="/src/assets/main-bg.png" alt="" />
+      <img className="home-background" src={mainBg} alt="" />
       <div className="home-heading">
         <img src="/src/assets/home-heading.png" alt="" />
         <a

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 import "./Header.css";
 
 function Header() {
@@ -17,7 +18,7 @@ function Header() {
         </div>
         <div className="logo">
           <Link to="/">
-            <img src="src\\assets\\logo.png" alt="" />
+            <img src={logo} alt="" />
           </Link>
         </div>
         <ul className={`nav-links ${openMenu ? "active" : ""}`}>
