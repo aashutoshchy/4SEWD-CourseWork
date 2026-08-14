@@ -1,6 +1,36 @@
-/* About */
-.aboutus {
-  width: 70%;
-  margin: auto;
-  /* height: 60vh; */
+.about-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+}
+
+.about-page .heading {
+  margin-bottom: 70px;
+}
+
+.about-section {
+  margin-bottom: 65px;
+}
+
+.about-section h2 {
+  font-size: 28px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.about-section p {
+  max-width: 780px;
+  font-size: 17px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.about-quote {
+  margin-top: 90px;
+  padding: 30px 0;
+  font-size: 28px;
+  font-style: italic;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
