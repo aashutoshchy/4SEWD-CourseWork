@@ -12,10 +12,11 @@
   height: 300px;
   background: var(--bg-card);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 20px 0;
-  padding: 10px 0;
+  padding: 10px 80px;
+  gap: 40px;
   border-radius: 10px;
   transition: ease-in-out 0.2s;
   text-decoration: none;
@@ -48,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 20px;
+  gap: 24px;
 }
 
 .release-type-sort button {
@@ -56,7 +57,6 @@
   border: none;
   text-decoration: none;
   padding: 6px 15px;
-  margin-right: 10px;
   color: black;
   border-radius: 2rem;
   font-size: 0.8rem;
@@ -76,7 +76,8 @@
 
 @media screen and (max-width: 666px) {
   .release {
-    padding: 7px 2px;
+    /* padding: 7px 2px; */
+    justify-content: center;
     position: relative;
     overflow: hidden;
   }
@@ -87,7 +88,7 @@
     right: 0;
     bottom: 0;
     padding: 10px 12px;
-    background: linear-gradient(to top, #14072d, transparent);
+    background: linear-gradient(to top, #2d233eb6, transparent);
   }
 
   .release-info p {
