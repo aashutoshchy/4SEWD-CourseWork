@@ -33,6 +33,7 @@ function Artists() {
               id={artist.id}
               name={artist.name}
               src={artist.cardImage || artist.profileImage}
+              role={artist.occupation}
               bio={artist.bio}
             />
           );
