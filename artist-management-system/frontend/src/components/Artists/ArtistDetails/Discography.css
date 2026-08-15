@@ -42,34 +42,52 @@
   font-weight: 300;
 }
 
+.release-type-sort {
+  width: 80%;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.release-type-sort button {
+  background-color: var(--btn-secondary-bg);
+  border: none;
+  text-decoration: none;
+  padding: 6px 15px;
+  margin-right: 10px;
+  color: black;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.release-type-sort button.active {
+  background-color: var(--btn-secondary-bg-active);
+  color: white;
+}
+
+.release-type-sort button:focus-visible {
+  outline: 2px solid var(--btn-secondary-bg-active);
+  outline-offset: 2px;
+}
+
 @media screen and (max-width: 666px) {
   .release {
     padding: 7px 2px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
-  }
-
-  .release:hover:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: #0000008b;
   }
 
   .release-info {
     position: absolute;
-    display: none;
-  }
-
-  .release:hover .release-info {
-    /* When hovering on .release, something should happen in .release info */
-    display: block;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 12px;
+    background: linear-gradient(to top, #14072d, transparent);
   }
 
   .release-info p {
@@ -83,5 +101,10 @@
 
   .release-year {
     font-weight: 500;
+  }
+
+  .release-type-sort {
+    width: 90%;
+    justify-content: space-around;
   }
 }
