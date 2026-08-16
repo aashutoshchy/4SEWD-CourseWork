@@ -25,3 +25,9 @@
 .gallery-image img:hover {
   transform: translateY(-4px);
 }
+
+.gallery-empty {
+  text-align: center;
+  color: var(--text-secondary, #888);
+  margin: 60px 0;
+}

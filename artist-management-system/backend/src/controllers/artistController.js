@@ -2,13 +2,9 @@ import Artist from "../models/Artist.js";
 
 export const getAllArtists = async (req, res) => {
   try {
-    // console.log("getAllArtists hit");
     const artists = await Artist.find();
-    // console.log("artists found:", artists.length);
-    // console.log("artists data:", JSON.stringify(artists[0]));
-    res.json(artists); // remove this to make the page forever loaded.
+    res.json(artists);
   } catch (error) {
-    // console.log("error caught:", error.message);
     res.status(500).json({ message: error.message });
   }
 };
@@ -37,9 +33,18 @@ export const createArtist = async (req, res) => {
       profileImage,
       bannerImage,
       cardImage,
+      galleryImages,
       spotifyUrl,
       youtubeUrl,
       socialLinks,
+      realName,
+      birthDate,
+      height,
+      weight,
+      occupation,
+      instruments,
+      soloDebut,
+      yearsActive,
     } = req.body;
 
     const artist = await Artist.create({
@@ -51,27 +56,30 @@ export const createArtist = async (req, res) => {
       profileImage,
       bannerImage,
       cardImage,
+      galleryImages,
       spotifyUrl,
       youtubeUrl,
       socialLinks,
+      realName,
+      birthDate,
+      height,
+      weight,
+      occupation,
+      instruments,
+      soloDebut,
+      yearsActive,
     });
 
     res.status(201).json(artist);
   } catch (error) {
-    // Duplicate slug error
-    // 409 — conflict (duplicate)
     if (error.code === 11000) {
       return res
         .status(409)
         .json({ message: "An artist with this slug already exists" });
     }
-    // validation error (missing required fields, wrong types)
     if (error.name === "ValidationError") {
       return res.status(400).json({ message: error.message });
     }
-
-    // anything else
-    // 500 — server/database error
     res.status(500).json({ message: error.message });
   }
 };
@@ -87,9 +95,18 @@ export const updateArtist = async (req, res) => {
       profileImage,
       bannerImage,
       cardImage,
+      galleryImages,
       spotifyUrl,
       youtubeUrl,
       socialLinks,
+      realName,
+      birthDate,
+      height,
+      weight,
+      occupation,
+      instruments,
+      soloDebut,
+      yearsActive,
     } = req.body;
 
     const artist = await Artist.findOneAndUpdate(
@@ -104,9 +121,18 @@ export const updateArtist = async (req, res) => {
           profileImage,
           bannerImage,
           cardImage,
+          galleryImages,
           spotifyUrl,
           youtubeUrl,
           socialLinks,
+          realName,
+          birthDate,
+          height,
+          weight,
+          occupation,
+          instruments,
+          soloDebut,
+          yearsActive,
         },
       },
       { new: true, runValidators: true },

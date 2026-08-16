@@ -64,6 +64,10 @@
   margin-bottom: 20px;
 }
 
+.add-artist-form h3:not(:first-child) {
+  margin-top: 10px;
+}
+
 .add-artist-form label {
   font-size: 0.9rem;
   font-weight: 600;
@@ -137,6 +141,32 @@
   opacity: 0.9;
 }
 
+.step-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.step-actions .save-btn {
+  margin-top: 0;
+}
+
+.back-btn {
+  background: #fff;
+  color: var(--text-link);
+  border: 1px solid #d8d1f0;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 14px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #f4eeff;
+}
+
 .field-error {
   color: #dc2626;
   font-size: 0.8rem;
@@ -181,6 +211,15 @@
   .save-btn {
     width: 100%;
     align-self: stretch;
+    text-align: center;
+  }
+
+  .step-actions {
+    flex-direction: column;
+  }
+
+  .back-btn {
+    width: 100%;
     text-align: center;
   }
 }

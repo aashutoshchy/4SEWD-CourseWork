@@ -27,7 +27,11 @@ const artistSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+
     birthDate: {
+      type: Date,
+    },
+    soloDebut: {
       type: Date,
     },
     height: {
@@ -53,6 +57,10 @@ const artistSchema = new mongoose.Schema(
     },
     cardImage: {
       type: String,
+    },
+    galleryImages: {
+      type: [String],
+      default: [],
     },
     spotifyUrl: {
       type: String,
