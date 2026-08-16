@@ -9,7 +9,9 @@ function Layout() {
     <>
       <Overlay />
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );

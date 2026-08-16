@@ -8,15 +8,14 @@
 }
 
 .sidebar-container .sidebar-logo {
-  height: 15dvh;
-  padding: 0 10px;
+  height: 5dvh;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
 .sidebar-container .sidebar-logo img {
   height: 100%;
   width: auto;
+  padding: 0 30px;
   object-fit: cover;
 }
 
@@ -72,11 +71,15 @@
   .sidebar-container {
     flex-direction: row;
     align-items: center;
-    padding: 0 20px;
+    padding: 10px 20px;
   }
 
   .sidebar-container .sidebar-logo {
-    height: 80px;
+    height: 3dvh;
+  }
+
+  .sidebar-container .sidebar-logo img {
+    padding: 0;
   }
 
   .sidebar-container .sidebar-nav-links {

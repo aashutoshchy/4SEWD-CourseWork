@@ -37,7 +37,7 @@ function Footer() {
         </li>
       </ul>
       <p class="copyright-info">
-        © 2026 Aashutosh Chaudhary. All rights reserved.
+        © 2026 Aurora Entertainment 2026. All rights reserved.
       </p>
     </footer>
   );

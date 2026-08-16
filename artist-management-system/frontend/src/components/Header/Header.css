@@ -21,7 +21,7 @@ nav {
 }
 
 .logo {
-  height: 8dvh;
+  height: 5dvh;
   overflow: hidden;
 }
 
@@ -30,8 +30,6 @@ nav {
   width: 100%;
   object-fit: cover;
   z-index: 20;
-  transform: scale(1.5);
-  transform-origin: center;
 }
 
 .nav-links {

@@ -46,14 +46,9 @@ body {
   min-height: 100dvh;
 }
 
-/* Home Page */
 main {
   flex: 1;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .heading {

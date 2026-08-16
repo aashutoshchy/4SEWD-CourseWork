@@ -4,35 +4,39 @@
 
 .artist-visual {
   width: 100%;
-  height: 40vh;
+  height: clamp(220px, 35vh, 420px);
   overflow: hidden;
-  object-fit: contain;
   position: relative;
 }
 
-.artist-visual:hover {
-  background: #000;
-}
-
 .artist-visual img {
+  height: 100%;
+  width: 100%;
   object-fit: cover;
   object-position: center;
-  width: 100%;
+  display: block;
 }
 
 .artist-visual h1 {
-  top: 50%;
-  right: 20%;
   position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 20px 24px;
+  font-size: clamp(1.4rem, 1.1rem + 2vw, 2.75rem);
+  color: var(--text-white);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
 }
 
 .artist-details .artist-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 40px;
   background: var(--bg-surface);
-  padding: 20px 0;
+  padding: 16px 20px;
 }
 
 .artist-details ul li a {
@@ -49,4 +53,10 @@
 
 .artist-details ul li a.active {
   background: var(--btn-secondary-bg);
+}
+
+@media (max-width: 480px) {
+  .artist-details .artist-nav {
+    gap: 16px;
+  }
 }

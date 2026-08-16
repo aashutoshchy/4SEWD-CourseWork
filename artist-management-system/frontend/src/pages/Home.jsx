@@ -6,7 +6,7 @@ import "./Home.css";
 
 function Home() {
   return (
-    <main>
+    <div className="home-page">
       <img className="home-background" src={mainBg} alt="Background Image" />
       <div className="home-heading">
         <img src={homeHeading} alt="Ashutosh Chaudhary" />
@@ -18,7 +18,7 @@ function Home() {
           New Release<i className="fa-solid fa-play"></i>
         </a>
       </div>
-    </main>
+    </div>
   );
 }
 

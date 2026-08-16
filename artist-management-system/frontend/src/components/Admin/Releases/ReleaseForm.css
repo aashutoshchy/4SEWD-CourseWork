@@ -387,7 +387,6 @@
   cursor: not-allowed;
 }
 
-/* ---------- Responsive ---------- */
 @media screen and (max-width: 1024px) {
   .release-form {
     grid-template-columns: 1fr;
@@ -397,7 +396,7 @@
 
 @media screen and (max-width: 825px) {
   .release-form-container {
-    padding: 0 20px;
+    padding: 0 5px;
   }
 
   .release-form-heading {
