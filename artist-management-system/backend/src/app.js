@@ -11,7 +11,7 @@ import itunesRoutes from "./routes/itunesRoutes.js";
 const app = express();
 
 const allowedOrigins = [
-  "https://auroraentertainment.vercel.app/",
+  "https://auroraentertainment.vercel.app",
   "http://localhost:5173",
 ];
 
