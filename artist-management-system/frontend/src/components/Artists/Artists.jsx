@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from "react";
 import ArtistCard from "./ArtistCard";
-// import artists from "./artistsData";
+import Loading from "../Loading/Loading";
 import "./Artists.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Artists() {
   const [artists, setArtists] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${API_URL}/api/artists`)
       .then((response) => response.json())
       .then((data) => {
         setArtists(data);
+        setLoading(false);
       })
       .catch((e) => {
         console.log(e);
+        setLoading(false);
       });
   }, []);
-
-  console.log(artists);
 
   return (
     <div className="artists-page">
       <p className="heading">Artists</p>
+      {loading && <Loading />}
       <div className="artist-list">
         {artists.map((artist) => {
           return (
