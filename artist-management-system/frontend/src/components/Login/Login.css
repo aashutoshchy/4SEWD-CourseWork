@@ -43,6 +43,16 @@
   border-radius: 10px;
 }
 
+/* Removes the background after autofill username and password */
+.login-input input:-webkit-autofill,
+.login-input input:-webkit-autofill:hover,
+.login-input input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-surface) inset;
+  -webkit-text-fill-color: var(--text-primary, #000);
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: var(--text-primary, #000);
+}
+
 @media screen and (max-width: 825px) {
   .login-input {
     width: 50%;

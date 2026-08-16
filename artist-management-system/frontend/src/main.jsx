@@ -4,6 +4,7 @@ import {
   BrowserRouter,
   createBrowserRouter,
   RouterProvider,
+  Navigate,
 } from "react-router-dom";
 import "./index.css";
 import About from "./components/About/About.jsx";
@@ -101,7 +102,8 @@ const router = createBrowserRouter([
       </ProtectedRoute>
     ),
     children: [
-      { path: "dashboard", element: <Dashboard />, index: true },
+      { index: true, element: <Navigate to="dashboard" replace /> },
+      { path: "dashboard", element: <Dashboard /> },
       { path: "artists", element: <ArtistsList /> },
       { path: "artists/new", element: <ArtistForm /> },
       { path: "artists/edit/:slug", element: <ArtistForm /> },

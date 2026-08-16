@@ -20,7 +20,7 @@ function Sidebar() {
 
   const handleLogout = () => {
     localStorage.removeItem("aurora_token");
-    navigate("/admin");
+    navigate("/admin/login");
   };
 
   return (
