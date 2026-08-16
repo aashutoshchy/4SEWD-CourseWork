@@ -51,7 +51,6 @@
   text-overflow: ellipsis;
 }
 
-/* Action buttons */
 .action-icons {
   display: flex;
   align-items: center;
@@ -84,7 +83,6 @@
   outline-offset: 2px;
 }
 
-/* View modal */
 .message-modal-overlay {
   position: fixed;
   inset: 0;
@@ -213,7 +211,6 @@
   opacity: 0.85;
 }
 
-/* Responsive */
 @media (max-width: 825px) {
   .messages-lists th,
   .messages-lists td {

@@ -84,7 +84,6 @@
   gap: 18px;
 }
 
-/* Tablet and below: stack the bio above the profile card */
 @media screen and (max-width: 825px) {
   .profile-container {
     flex-direction: column;
@@ -103,7 +102,6 @@
   }
 }
 
-/* Mobile: tighten spacing and let long values wrap */
 @media screen and (max-width: 480px) {
   .profile-container {
     gap: 14px;
