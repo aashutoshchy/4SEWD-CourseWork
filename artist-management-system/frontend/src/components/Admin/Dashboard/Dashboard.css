@@ -34,10 +34,21 @@
 }
 
 .admin-avatar {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b3b98, #6a0dad);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.admin-avatar img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
 .welcome-heading {

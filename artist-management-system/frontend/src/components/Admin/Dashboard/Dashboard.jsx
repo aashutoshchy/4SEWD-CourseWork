@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 
+import logo from "../../../assets/logo.png";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Dashboard() {
@@ -73,7 +75,9 @@ function Dashboard() {
             <p className="admin-name">Aashutosh</p>
             <p className="admin-role">Admin</p>
           </div>
-          <div className="admin-avatar"></div>
+          <div className="admin-avatar">
+            <img src={logo} alt="Logo" />
+          </div>
         </div>
       </div>
 
